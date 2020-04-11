@@ -96,7 +96,7 @@ def Graph(X,Y,Ex_unit,Ey_unit,_q,q,grid_min,grid_max):
     ax.scatter(_q[0],_q[1],c=color ,s=size)
     ax.axis([grid_min,grid_max,grid_min,grid_max])
     ax.set_aspect('equal','box')
-#this funcion ask for the puntual charges and their location and puts them in their respective varibles 
+#this funcion ask for the puntual charges and their location and puts them in their respective variables 
 def ChargesGenerator(ChargeNumber):
     global Charges
     global ChargeLocation
@@ -139,7 +139,7 @@ def Puntual():
     Ex_unit = Ex/mags
     Ey_unit = Ey/mags
 
-#this funcion ask for the plane charges and their location and puts them in their respective varibles
+#this funcion ask for the plane charges and their location and puts them in their respective variables
 def ChargesGeneratorPlane(planeNumber):
     global Charges
     global ChargeRange
