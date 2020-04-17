@@ -1,4 +1,4 @@
-#I utilize numpy to manage matix, mapplotlib to ilustrate the charges, 
+#I utilize numpy to manage matix, mapplotlib to ilustrate the charges
 import numpy as np
 import matplotlib.pyplot as plt
 import math
@@ -7,7 +7,7 @@ plt.style.use("default")
 fig, ax = plt.subplots(figsize=(6,6))
 
 # numberOfPlaneCharges is used to stablish the number of charges between the range of a magnetic plane
-numberOfPlaneCharges = 100
+
 resp = 0
 Charges = []
 ChargesPlane = []
@@ -66,9 +66,11 @@ def GenerateSpace(ChargeNumber):
                 vm = i[0] 
     #sets the minimum and maximum of the grid +- space so it aint so tight to the charge both for a simple charge or combinated
     if resp == 1:
-        N = int(math.ceil((9*len(Charges))))
-        grid_min = vm - float(math.ceil(N/(len(Charges))))
-        grid_max = vM + float(math.ceil(N/(len(Charges))))
+        N = 10
+        grid_min = vm - float(math.ceil(N/(10/(len(Charges)))))
+        grid_max = vM + float(math.ceil(N/(10/(len(Charges)))))
+        print(len(Charges))
+        print(float(math.ceil(N/10/(len(Charges)))))
     else:
         N = 25
         """grid_min = vm - float(math.ceil(N/(len(Charges)/numberOfPlaneCharges)))*0.3
@@ -105,7 +107,6 @@ def ChargesGenerator(ChargeNumber):
         CL = ChargeInfo.split(",")
         Charges.append(float(CL[0]))
         ChargeLocation.append([int(CL[1]), int(CL[2])])
-
 #this fuction does the calculations for the puncutal charges
 def Puntual(): 
     global ChargeNumber, X,Y, Ex, Ey, Ex_unit, Ey_unit
@@ -152,6 +153,7 @@ def ChargesGeneratorPlane(planeNumber):
     for i in range(planeNumber):
         numeratorSlope = ChargeRange[i][3]-ChargeRange[i][1]
         denominatorSlope = ChargeRange[i][2]-ChargeRange[i][0]
+        numberOfPlaneCharges = int(math.sqrt((denominatorSlope)**2+(numeratorSlope)**2)*25)
         #checks whats the beginning of the planes
         if ChargeRange[i][0] < ChargeRange[i][2]:
             dsx = ChargeRange[i][0]
